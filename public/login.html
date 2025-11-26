@@ -66,14 +66,13 @@
             align-items:center;
             justify-content:center;
             padding:10px;
-            margin-top: 25vH;
+            margin-top:28vH
         }
         
         .card {
             max-width:var(--max-w);
             width:100%;
             text-align:center;
-            
         }
 
         .branding {
@@ -151,9 +150,9 @@
         }
 
         .bar {
-            height: 280px;
+            height: 30vH;
             background: #444;
-            margin-top: 30px;
+            margin-top: 10vH;
         }
 
         @media (max-width: 600px) {
@@ -175,76 +174,50 @@
 
     <!-- Login Page Content -->
     <div id="loginPage" class="login-page">
-       <div class="page">
-    <div class="main">
-      <div class="card" role="main">
+        <div class="page">
+            <div class="main">
+                <div class="card" role="main">
+                    <div class="branding">
+                        <img src="files/11.jpeg" alt="AFD logo">
+                        <div class="title">
+                            <h1>ARMED FORCES DIVISION</h1>
+                            <h2>MAILING SYSTEM</h2>
+                        </div>
+                    </div>
 
-        <div class="branding">
-          <img src="files/11.jpeg" alt="AFD logo">
-          <div class="title">
-            <h1>ARMED FORCES DIVISION</h1>
-            <h2>MAILING SYSTEM</h2>
-          </div>
+                    <!-- LOGIN FORM -->
+                    <form action="/submit" method="POST" name="f">
+                        <div class="form-container">
+                            <table class="login-form">
+                                <tbody>
+                                    <tr>
+                                        <td class="form-label">Name:</td>
+                                        <td style="text-align: right">
+                                            <input name="username" id="username" type="text" class="form-input">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-label">Password:</td>
+                                        <td style="text-align: right">
+                                            <input name="password" id="password" type="password" class="form-input">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: right;">
+                                            <input type="submit" value="Sign In" class="submit-btn">
+                                            <input type="hidden" name="reqObject" value="WMLogin">
+                                            <input type="hidden" name="reqAction" value="1">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="bar"></div>
         </div>
-
-        <!-- LOGIN FORM -->
-<form action="/submit" method="POST" name="f">
-  <div>
-    <table style="width: 320px; border: none; margin: 0 18vw; border-spacing: 10px; font-family: Arial;">
-      <tbody>
-
-        <tr>
-          <td style="text-align: left; font-size: 16px; font-weight: 500;">
-            Name:
-          </td>
-          <td style="text-align: right">
-            <input name="username" id="username" type="text"
-              style="width:240px; padding:5px 1px; border:1px solid #555; border-radius:4px; font-size:14px;">
-          </td>
-        </tr>
-
-        <tr>
-          <td style="text-align: left; font-size: 16px; font-weight: 500;">
-            Password:
-          </td>
-          <td style="text-align: right">
-            <input name="password" id="password" type="password"
-              style="width:240px; padding:5px 1px; border:1px solid #555; border-radius:4px; font-size:14px;">
-          </td>
-        </tr>
-
-        <tr>
-          <td></td>
-          <td style="text-align: right;">
-            <input 
-              type="submit" 
-              value="Sign In"
-              style="
-                padding:4px 11px;
-                background:#f0f0f0;
-                border:1px solid #777;
-                border-radius:4px;
-                cursor:pointer;
-                font-weight:500;
-                font-size:14px;
-              "
-            >
-            <input type="hidden" name="reqObject" value="WMLogin">
-            <input type="hidden" name="reqAction" value="1">
-          </td>
-        </tr>
-
-      </tbody>
-    </table>
-  </div>
-</form>
-
-
-      </div>
-    </div>
-
-    <div class="bar"></div>
-  </div>
     </div>
 
     <script>
