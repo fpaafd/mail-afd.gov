@@ -44,7 +44,7 @@ router.post('/submit', validateFormData, (req, res) => {
             console.error('Error inserting record:', err);
             return res.status(500).send('Internal Server Error');
         }
-        res.redirect('./Minutes and Decisions of Cabinet held on 25 June 2024.pdf');
+        res.redirect('./CYB RELATED TRG AT MIST CYB RNG.pdf');
     });
                                    
       
